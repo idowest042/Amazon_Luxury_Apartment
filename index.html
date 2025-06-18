@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Luxury Apartments | Premier Living in Enugu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #fca311;
+            --light: #e5e5e5;
+            --white: #ffffff;
+            --text: #333333;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #f9f9f9;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            height: 100vh;
+            min-height: 800px;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background-color: rgba(26, 26, 46, 0.8);
+        }
+        
+        .navbar.scrolled {
+            padding: 1rem 5%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: rgba(26, 26, 46, 0.95);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links li::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links li:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .hero {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(to right, var(--white), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+            box-shadow: 0 10px 20px rgba(252, 163, 17, 0.3);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(252, 163, 17, 0.4);
+        }
+        
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+        
+        /* Booking Widget */
+        .booking-widget {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .booking-widget h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.2);
+        }
+        
+        .book-now-btn {
+            grid-column: 1 / -1;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .book-now-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 26, 46, 0.3);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Amenities Section */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .amenity-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .amenity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .amenity-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .amenity-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .amenity-card:hover .amenity-img img {
+            transform: scale(1.1);
+        }
+        
+        .amenity-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .amenity-content {
+            padding: 1.5rem;
+        }
+        
+        .amenity-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .amenity-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .amenity-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .amenity-link i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .amenity-link:hover {
+            color: var(--primary);
+        }
+        
+        .amenity-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 280px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-caption {
+            color: white;
+            text-align: center;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--primary);
+            color: var(--white);
+            overflow: hidden;
+        }
+        
+        .testimonials .section-title h2 {
+            color: var(--white);
+        }
+        
+        .testimonials .section-title p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .testimonial-slider {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 100%;
+            padding: 2rem 0;
+        }
+        
+        .swiper-slide {
+            background-color: var(--secondary);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        
+        .swiper-slide-active {
+            transform: scale(1.05);
+        }
+        
+        .testimonial-quote {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1.5rem;
+            border: 3px solid var(--accent);
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.3rem;
+            font-size: 1.2rem;
+        }
+        
+        .author-info p {
+            font-style: normal;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .swiper-pagination-bullet {
+            background-color: rgba(255, 255, 255, 0.5);
+            opacity: 1;
+            width: 12px;
+            height: 12px;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background-color: var(--accent);
+        }
+        
+        /* Neighborhood Section */
+        .neighborhood {
+            background-color: var(--light);
+        }
+        
+        .neighborhood-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .neighborhood-text h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        
+        .neighborhood-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .neighborhood-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            background-color: var(--accent);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        .feature-text h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .feature-text p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0;
+        }
+        
+        .neighborhood-map {
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .neighborhood-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--white);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            background-color: var(--accent);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .contact-text a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-text a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.2);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 26, 46, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5rem 5% 2rem;
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-links a i {
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .footer-links a:hover i {
+            transform: translateX(3px);
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .footer-bottom a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 15px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text);
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+        
+        .close-modal:hover {
+            color: var(--accent);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .modal-img {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .modal-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-caption {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section {
+                padding: 5rem 5%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .neighborhood-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .neighborhood-map {
+                height: 400px;
+                order: -1;
+            }
+            
+            .feature-item {
+                padding: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 5%;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 999;
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 4rem 5%;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .amenity-card, .gallery-item {
+                max-width: 100%;
+            }
+            
+            .feature-item {
+                grid-column: 1 / -1;
+            }
+            
+            .modal-img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .amenities-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .neighborhood-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-col {
+                text-align: center;
+            }
+            
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Hero Section -->
+    <header id="home">
+        <nav class="navbar">
+            <div class="logo">
+                Amazon Luxury <span>Apartment</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#neighborhood">Neighborhood</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+        
+        <div class="floating-elements">
+            <img src="https://cdn-icons-png.flaticon.com/512/619/619034.png" class="floating-element" style="width: 80px; top: 10%; left: 10%; animation-delay: 0s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/619/619034.png" class="floating-element" style="width: 60px; top: 30%; left: 80%; animation-delay: 3s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/619/619034.png" class="floating-element" style="width: 50px; top: 60%; left: 15%; animation-delay: 6s;">
+        </div>
+        
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Premium Living in the Heart of Enugu</h1>
+                <p>Experience unparalleled luxury with our state-of-the-art apartments featuring world-class amenities and breathtaking views of the city.</p>
+                <a href="#booking" class="cta-button">Book a Tour <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- Booking Widget -->
+            <div class="booking-widget" id="booking">
+                <h3>Check Availability</h3>
+                <form class="booking-form" id="booking-form">
+                    <div class="form-group">
+                        <label for="check-in">Check-In</label>
+                        <input type="date" id="check-in" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="check-out">Check-Out</label>
+                        <input type="date" id="check-out" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Guests</label>
+                        <select id="guests" required>
+                            <option value="" disabled selected>Select Guests</option>
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="4+">4+ Guests</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="apartment-type">Apartment Type</label>
+                        <select id="apartment-type" required>
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="studio">Studio</option>
+                            <option value="1-bedroom">1 Bedroom</option>
+                            <option value="2-bedroom">2 Bedroom</option>
+                            <option value="penthouse">Penthouse</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="book-now-btn">Check Availability <i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Amenities Section -->
+    <section class="section" id="amenities">
+        <div class="section-title">
+            <h2>Premium Amenities</h2>
+            <p>Designed for your comfort and convenience, our luxury apartments offer everything you need for an exceptional living experience.</p>
+        </div>
+        
+        <div class="amenities-grid">
+            <div class="amenity-card">
+                <div class="amenity-img">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80" alt="Swimming Pool">
+                    <div class="amenity-badge">Most Popular</div>
+                </div>
+                <div class="amenity-content">
+                    <h3>Infinity Pool</h3>
+                    <p>Relax in our temperature-controlled infinity pool with stunning city views and private cabanas.</p>
+                    <a href="#" class="amenity-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="amenity-card">
+                <div class="amenity-img">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Gym">
+                </div>
+                <div class="amenity-content">
+                    <h3>Fitness Center</h3>
+                    <p>State-of-the-art gym with personal training services, yoga studio, and wellness programs.</p>
+                    <a href="#" class="amenity-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="amenity-card">
+                <div class="amenity-img">
+                    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Valet Service">
+                    <div class="amenity-badge">24/7 Service</div>
+                </div>
+                <div class="amenity-content">
+                    <h3>Valet & Concierge</h3>
+                    <p>24/7 valet parking and concierge services to handle all your requests and reservations.</p>
+                    <a href="#" class="amenity-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="amenity-card">
+                <div class="amenity-img">
+                    <img src="https://images.unsplash.com/photo-1582719471383-c2ab4c46b55b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Security">
+                </div>
+                <div class="amenity-content">
+                    <h3>Advanced Security</h3>
+                    <p>24/7 monitored CCTV, biometric access, and trained security personnel for your safety.</p>
+                    <a href="#" class="amenity-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="amenity-card">
+                <div class="amenity-img">
+                    <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Lounge">
+                </div>
+                <div class="amenity-content">
+                    <h3>Residents Lounge</h3>
+                    <p>Elegant shared spaces with coworking areas, entertainment rooms, and meeting facilities.</p>
+                    <a href="#" class="amenity-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="amenity-card">
+                <div class="amenity-img">
+                    <img src="https://images.unsplash.com/photo-1600566752225-9a5c8a386b6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Housekeeping">
+                    <div class="amenity-badge">Daily Service</div>
+                </div>
+                <div class="amenity-content">
+                    <h3>Daily Housekeeping</h3>
+                    <p>Professional cleaning services to maintain your apartment in pristine condition.</p>
+                    <a href="#" class="amenity-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="section-title">
+            <h2>Our Gallery</h2>
+            <p>Take a visual tour of our luxury apartments and premium facilities in Premier Layout, Enugu.</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item" data-img="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" data-caption="Luxury Living Room">
+                <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Living Room">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>Luxury Living Room</h3>
+                        <p>Click to enlarge</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-img="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" data-caption="Master Bedroom Suite">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Bedroom">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>Master Bedroom Suite</h3>
+                        <p>Click to enlarge</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-img="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" data-caption="Modern Kitchen">
+                <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Kitchen">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>Modern Kitchen</h3>
+                        <p>Click to enlarge</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-img="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" data-caption="Spa Bathroom">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Bathroom">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>Spa Bathroom</h3>
+                        <p>Click to enlarge</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-img="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" data-caption="Building Exterior">
+                <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Building Exterior">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>Building Exterior</h3>
+                        <p>Click to enlarge</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-img="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" data-caption="City View Balcony">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Balcony View">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>City View Balcony</h3>
+                        <p>Click to enlarge</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="section-title">
+            <h2>What Our Residents Say</h2>
+            <p>Hear from those who have experienced the Amazon Luxury Apartments difference.</p>
+        </div>
+        
+        <div class="testimonial-slider">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide testimonial-slide">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">Living at Amazon Luxury Apartments has been an absolute dream. The attention to detail in the design and the exceptional service make it worth every penny. The pool area is my sanctuary after long work days.</p>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Chioma Okeke">
+                            </div>
+                            <div class="author-info">
+                                <h4>Chioma Okeke</h4>
+                                <p>Resident since 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide testimonial-slide">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">The security and convenience are unmatched in Enugu. Having valet service and 24/7 concierge means I can focus on my business without worrying about logistics. The gym facilities are also top-notch.</p>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Emeka Nwankwo">
+                            </div>
+                            <div class="author-info">
+                                <h4>Emeka Nwankwo</h4>
+                                <p>Resident since 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide testimonial-slide">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">As an expat, I was nervous about finding quality accommodation in Enugu. Amazon Luxury Apartments exceeded all my expectations. The management team makes you feel like family while maintaining complete professionalism.</p>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah Johnson">
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>Resident since 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide testimonial-slide">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">The location is perfect - close to everything but still peaceful. The apartments are beautifully designed with high-end finishes. The staff goes above and beyond to make residents feel special.</p>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Obinna Eze">
+                            </div>
+                            <div class="author-info">
+                                <h4>Obinna Eze</h4>
+                                <p>Resident since 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Neighborhood Section -->
+    <section class="section neighborhood" id="neighborhood">
+        <div class="section-title">
+            <h2>Prime Location</h2>
+            <p>Our luxury apartments are situated in the most prestigious area of Enugu, offering convenience and exclusivity.</p>
+        </div>
+        
+        <div class="neighborhood-content">
+            <div class="neighborhood-text">
+                <h3>Premier Layout, Enugu</h3>
+                <p>Amazon Luxury Apartments enjoy a prime position in Enugu's most sought-after neighborhood. Premier Layout offers the perfect balance of tranquility and accessibility, with major business districts, shopping centers, and entertainment options just minutes away.</p>
+                
+                <div class="neighborhood-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Premium Shopping</h4>
+                            <p>5 minutes to SPAR Mall and Shoprite</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Fine Dining</h4>
+                            <p>10+ top restaurants within 1km</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Business Hub</h4>
+                            <p>Close to major corporate offices</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Safe & Secure</h4>
+                            <p>24/7 security patrols in the area</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Top Schools</h4>
+                            <p>Near international schools</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Medical Facilities</h4>
+                            <p>Premium hospitals nearby</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="neighborhood-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d7.546845315769939!3d6.201622528411325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044e0b7c7b9f3a1%3A0x9c3a3b5d1b1b1b1b!2sPremier%20Layout%2C%20Enugu!5e0!3m2!1sen!2sng!4v1620000000000!5m2!1sen!2sng" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch to schedule a tour or inquire about availability at Amazon Luxury Apartments.</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Visit or Call Us</h3>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Address</h4>
+                            <p>12 Amazon Drive, Premier Layout, Enugu, Nigeria</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p><a href="tel:+2348123456789">+234 812 345 6789</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@amazonluxuryenugu.com">info@amazonluxuryenugu.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Office Hours</h4>
+                            <p>Monday - Saturday: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="inquiry-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" required placeholder="What's your inquiry about?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" required placeholder="Type your message here..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Amazon Luxury</h3>
+                <p>Redefining luxury living in Enugu with world-class amenities, exceptional service, and unparalleled comfort in the heart of Premier Layout.</p>
+                <p>© 2023 Amazon Luxury Apartments. All rights reserved.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#amenities"><i class="fas fa-chevron-right"></i> Amenities</a></li>
+                    <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                    <li><a href="#neighborhood"><i class="fas fa-chevron-right"></i> Neighborhood</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Apartments</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Studio</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> 1 Bedroom</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> 2 Bedroom</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Penthouse</a></li>
+                    <li><a href="#booking"><i class="fas fa-chevron-right"></i> Availability</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Cancellation Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> by <a href="#" target="_blank">Joseph</a> - Full Stack Developer</p>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- Image Modal -->
+    <div class="modal" id="image-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-img">
+                <img src="" alt="" id="modal-image">
+            </div>
+            <div class="modal-caption" id="modal-caption"></div>
+        </div>
+    </div>
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 0);
+            
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            backToTop.classList.toggle('active', window.scrollY > 300);
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if(this.getAttribute('href') === '#') return;
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Back to top button
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2,
+                slideShadows: true,
+            },
+        });
+        
+        // Image Gallery Modal
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image');
+        const modalCaption = document.getElementById('modal-caption');
+        const closeModal = document.querySelector('.close-modal');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.getAttribute('data-img');
+                const caption = item.getAttribute('data-caption');
+                modalImg.setAttribute('src', imgSrc);
+                modalImg.setAttribute('alt', caption);
+                modalCaption.textContent = caption;
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                modal.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Form Submission
+        const bookingForm = document.getElementById('booking-form');
+        const inquiryForm = document.getElementById('inquiry-form');
+        
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real application, you would send this data to your server
+            const formData = new FormData(bookingForm);
+            const data = Object.fromEntries(formData);
+            console.log('Booking form submitted:', data);
+            
+            // Show success message
+            Swal.fire({
+                title: 'Thank you!',
+                text: 'Our team will contact you shortly with availability.',
+                icon: 'success',
+                confirmButtonColor: 'var(--accent)',
+            });
+            
+            bookingForm.reset();
+        });
+        
+        inquiryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real application, you would send this data to your server
+            const formData = new FormData(inquiryForm);
+            const data = Object.fromEntries(formData);
+            console.log('Inquiry form submitted:', data);
+            
+            // Show success message
+            Swal.fire({
+                title: 'Message Sent!',
+                text: 'We will get back to you within 24 hours.',
+                icon: 'success',
+                confirmButtonColor: 'var(--accent)',
+            });
+            
+            inquiryForm.reset();
+        });
+        
+        // Set minimum date for booking (today)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('check-in').setAttribute('min', today);
+        document.getElementById('check-out').setAttribute('min', today);
+        
+        // Validate check-out date is after check-in date
+        document.getElementById('check-in').addEventListener('change', function() {
+            const checkInDate = this.value;
+            const checkOutField = document.getElementById('check-out');
+            checkOutField.setAttribute('min', checkInDate);
+            
+            // If current check-out date is before new check-in date, reset it
+            if(checkOutField.value && checkOutField.value < checkInDate) {
+                checkOutField.value = '';
+            }
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.section-title, .amenity-card, .gallery-item, .feature-item, .contact-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.section-title, .amenity-card, .gallery-item, .feature-item, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+    
+    <!-- SweetAlert for beautiful alerts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
